@@ -74,6 +74,34 @@ A real-time sentiment analysis pipeline was created using Kafka and PySpark, wit
 
 ---
 
+## KAFKA Setup
+
+- echo -n -e "\033]0;Zookeeper\007"
+- echo -n -e "\033]0;Kafka\007"
+- echo -n -e "\033]0;Producer\007"
+- echo -n -e "\033]0;Consumer\007"
+
+- zookeeper-server-start /opt/homebrew/etc/kafka/zookeeper.properties
+
+- kafka-server-start /opt/homebrew/etc/kafka/server.properties
+
+1. Create topic:
+kafka-topics --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+2. Producer:
+kafka-console-producer --broker-list localhost:9092 --topic test-topic
+
+3. Consumer 
+kafka-console-consumer --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+
+4. List of topics
+kafka-topics --list --bootstrap-server localhost:9092
+
+5. Delete:
+kafka-topics --delete --topic heartinput --bootstrap-server localhost:9092
+
+---
+
 ## Contributions
 Feel free to contribute by submitting issues or pull requests. All contributions are welcome!
 
